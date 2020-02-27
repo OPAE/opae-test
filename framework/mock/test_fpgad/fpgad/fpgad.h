@@ -1,4 +1,4 @@
-// Copyright(c) 2018-2019, Intel Corporation
+// Copyright(c) 2018-2020, Intel Corporation
 //
 // Redistribution  and  use  in source  and  binary  forms,  with  or  without
 // modification, are permitted provided that the following conditions are met:
@@ -53,20 +53,12 @@
 
 //#include "opae_int.h"
 
-//#include "safe_string/safe_string.h"
-
 //#include "api/logging.h"
 //#include "command_line.h"
 
 //int daemonize(void (*hndlr)(int, siginfo_t *, void *),
 //	      mode_t mask,
 //	      const char *dir);
-
-/*
-typedef void *fpga_token;
-typedef void *fpga_objtype;
-typedef int fpga_result;
-*/
 
 #define fpgad_mutex_lock(__res, __mtx_ptr)                                     \
 	({                                                                     \
