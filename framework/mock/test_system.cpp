@@ -651,8 +651,10 @@ int test_system::xstat(int ver, const char *path, struct stat *buf) {
   if (!res && strlen(path) > 5) {
     // If path is rooted at /dev, assume it is a char device.
     str::string p(path, 5);
-    if (p == std::string("/dev/"))
-	    buf->st_mode |= S_IFCHR;
+    if (p == std::string("/dev/")) {
+            buf->st_mode &= ~S_IFMT;
+            buf->st_mode |= S_IFCHR;
+    }
   }
 
   return res;
@@ -665,8 +667,10 @@ int test_system::lstat(int ver, const char *path, struct stat *buf) {
   if (!res && strlen(path) > 5) {
     // If path is rooted at /dev, assume it is a char device.
     str::string p(path, 5);
-    if (p == std::string("/dev/"))
-	    buf->st_mode |= S_IFCHR;
+    if (p == std::string("/dev/")) {
+            buf->st_mode &= ~S_IFMT;
+            buf->st_mode |= S_IFCHR;
+    }
   }
 
   return res;
