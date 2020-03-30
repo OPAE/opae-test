@@ -712,7 +712,6 @@ std::pair<std::string, test_platform> make_platform(uint16_t ven_id, uint16_t de
   platform.mock_sysfs = nullptr;
   std::string name = platform_names[platform_cfg(ven_id, dev_id, platform.driver)];
   for (auto p : pci_paths) {
-	if (!name.empty())
          platform.devices.push_back(make_device(ven_id, dev_id, name, p));
   }
   return std::make_pair(name, platform);
