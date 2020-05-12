@@ -127,7 +127,7 @@ const char *vc_mdata =
      "platform-name": "PAC"}";
 )mdata";
 
-const char *n3000_mdata_dfl =
+const char *dfl_n3000_mdata =
 R"mdata({"version": 1,
    "afu-image":
     {"clock-frequency-high": 312,
@@ -146,7 +146,7 @@ R"mdata({"version": 1,
      "platform-name": "PAC"}";
 )mdata";
 
-const char *d5005_mdata_dfl =
+const char *dfl_d5005_mdata =
 R"mdata({"version": 1,
    "afu-image":
     {"clock-frequency-high": 312,
@@ -348,8 +348,8 @@ static platform_db MOCK_PLATFORMS = {
                        .port_num_errors = 3,
                        .gbs_guid = "58656f6e-4650-4741-b747-425376303031",
                        .mdata = vc_mdata}}}},
-   {"dcp-n3000-dfl",
-     test_platform{.mock_sysfs = "mock_sys_tmp-n3000-dfl-nlb0.tar.gz",
+   {"dfl-n3000",
+     test_platform{.mock_sysfs = "mock_sys_dfl_n3000_nlb0.tar.gz",
                    .driver = fpga_driver::linux_dfl0,
                    .devices = {test_device{
                        .fme_guid = "a5d72a3c-c8b0-4939-912c-f715e5dc10ca",
@@ -370,12 +370,12 @@ static platform_db MOCK_PLATFORMS = {
                        .port_object_id = 0xf400000,
                        .vendor_id = 0x8086,
                        .device_id = 0x0b30,
-                       .fme_num_errors = 9,
+                       .fme_num_errors = 8,
                        .port_num_errors = 3,
                        .gbs_guid = "58656f6e-4650-4741-b747-425376303031",
-                       .mdata = n3000_mdata_dfl}}}},
-   { "dcp-d5005-dfl",
-     test_platform{ .mock_sysfs = "mock_sys_tmp-d5005-dfl-nlb0.tar.gz",
+                       .mdata = dfl_n3000_mdata}}}},
+   { "dfl-d5005",
+     test_platform{ .mock_sysfs = "mock_sys_dfl_d5005_nlb0.tar.gz",
                        .driver = fpga_driver::linux_dfl0,
                        .devices = {test_device{
                        .fme_guid = "9346116d-a52d-5ca8-b06a-a9a389ef7c8d",
@@ -396,10 +396,10 @@ static platform_db MOCK_PLATFORMS = {
                        .port_object_id = 0xf400000,
                        .vendor_id = 0x8086,
                        .device_id = 0x0b2b,
-                       .fme_num_errors = 9,
+                       .fme_num_errors = 8,
                        .port_num_errors = 3,
                        .gbs_guid = "58656f6e-4650-4741-b747-425376303031",
-                       .mdata = d5005_mdata_dfl}} } }
+                       .mdata = dfl_d5005_mdata}} } }
 };
 
 
@@ -704,8 +704,8 @@ static std::map<platform_cfg, std::string> platform_names = {
   {  platform_cfg(0x8086, 0xbcc0, fpga_driver::linux_dfl0),  "skx-p-dfl0" },
   {  platform_cfg(0x8086, 0x0b30, fpga_driver::linux_intel), "dcp-vc" },
   {  platform_cfg(0x8086, 0x0b31, fpga_driver::linux_intel), "dcp-vc-v" },
-  {  platform_cfg(0x8086, 0x0b30, fpga_driver::linux_dfl0),  "dcp-n3000-dfl" },
-  {  platform_cfg(0x8086, 0x0b2b, fpga_driver::linux_dfl0),  "dcp-d5005-dfl" },
+  {  platform_cfg(0x8086, 0x0b30, fpga_driver::linux_dfl0),  "dfl-n3000" },
+  {  platform_cfg(0x8086, 0x0b2b, fpga_driver::linux_dfl0),  "dfl-d5005" },
   
 };
 
