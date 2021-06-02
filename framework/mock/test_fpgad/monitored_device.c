@@ -203,7 +203,6 @@ STATIC bool mon_consider_device(struct fpgad_config *c, fpga_token token)
 			}
 	
 			fpgaDestroyProperties(&parent_props);
-			fpgaDestroyToken(&parent);
 	
 			for (i = 0 ; i < c->num_null_gbs ; ++i) {
 				if (!uuid_compare(c->null_gbs[i].pr_interface_id,
@@ -334,8 +333,6 @@ STATIC bool mon_consider_device(struct fpgad_config *c, fpga_token token)
 err_out_destroy:
 	if (props)
 		fpgaDestroyProperties(&props);
-	if (parent)
-		fpgaDestroyToken(&parent);
 	if (parent_props)
 		fpgaDestroyProperties(&parent_props);
 	return false;
